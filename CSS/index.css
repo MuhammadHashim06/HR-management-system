@@ -1,0 +1,109 @@
+/* Common styles for all devices */
+.Box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+  }
+  
+  .box1 {
+    background-color: white;
+    margin: 10%;
+    padding: 5%; 
+    
+  }
+  
+  .box1 h1 {
+    font-size: 2em; /* Adjust heading font size for smaller screens */
+    text-align: center; /* Center align text */
+  }
+  form a{
+    color: #5f8671;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 10%; /* Adjust padding for smaller screens */
+  }
+  
+  .box2 {
+    /* background-color: #5f8671;s */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(158, 200, 185);
+  }
+  
+  input[type="email"],
+  input[type="password"],
+  input[type="submit"] {
+    padding: 2%; /* Adjust padding for smaller screens */
+    font-size: 1em; /* Adjust font size for smaller screens */
+    margin-bottom: 3%; /* Adjust margin for smaller screens */
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
+  
+  input[type="email"],
+  input[type="password"],
+  input[type="submit"] {
+    transition: all ease 0.5s;
+    outline: none;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+  }
+  
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    border: 1px solid black;
+  }
+  
+  input[type="email"]:invalid,
+  input[type="password"]:invalid {
+    border: 1px solid red;
+  }
+  input[type="submit"]{
+    background-color: #1B4242;
+    color:white;
+  }
+  input[type="submit"]:hover {
+    background-color: #9EC8B9;
+    cursor: pointer;
+  }
+  
+  /* Media Query for smaller screens */
+  @media (max-width: 768px) {
+    .Box {
+      grid-template-columns: 1fr;
+      background-color: rgb(158, 200, 185);
+    }
+    .box2{
+      display: none;
+    }
+    
+    .box1
+    {
+      background-color: rgb(158, 200, 185);
+    }
+    .box1,
+    form {
+      background-color: white;
+      padding: 5%; /* Adjust padding for smaller screens */
+    }
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"],
+    label {
+      font-size: 0.8em; /* Adjust font size for smaller screens */
+    }
+  }
+  
+  
+/* 
+    grid-template-columns:repeat(2,2fr);
+  background-color:#4d7785;
+
+
+
+
+
+
+*/

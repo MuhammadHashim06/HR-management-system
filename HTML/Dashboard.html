@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/Dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <title>Dashboard | </title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+
+<body>
+    <header>
+        <button id="toggleSidebarButton">Toggle Sidebar</button>
+    </header>
+    <div class="main">
+        <div class="sidebar">
+            <!-- <h1>Dashboards</h1> -->
+            <div class="user">
+                <img src="../Images/Log-in_vector.png" alt="">
+                <p>Muhammad Hashim <br>
+                    <span>Web developer</span> </p>
+            </div>
+            <div class="menubar">
+                <ul>
+                    <li><i class="fas fa-home"></i> Home</li>
+                    <li><i class="fas fa-calendar-alt"></i> Attendance</li>
+                    <li><i class="fas fa-tasks"></i> Task</li>
+                    <li><i class="fas fa-user-plus"></i> New Hiring</li>
+                    <li><i class="fas fa-sign-out-alt"></i> Log out</li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu"></div>
+    </div>
+
+    <script>
+        // Function to toggle sidebar visibility based on screen size
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            if (window.innerWidth <= 768) {
+                sidebar.style.display = 'none';
+            } else {
+                sidebar.style.display = 'block';
+            }
+        }
+
+        // Initial call to toggleSidebar when the page loads
+        toggleSidebar();
+
+        // Event listener for window resize to recheck the screen size and toggle the sidebar
+        window.addEventListener('resize', toggleSidebar);
+
+        // Toggle sidebar visibility when the button is clicked
+        const toggleSidebarButton = document.getElementById('toggleSidebarButton');
+        toggleSidebarButton.addEventListener('click', function() {
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar.style.display === 'none' || sidebar.style.display === '') {
+                sidebar.style.display = 'block';
+            } else {
+                sidebar.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
