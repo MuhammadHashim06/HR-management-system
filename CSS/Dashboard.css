@@ -1,107 +1,98 @@
-/* Apply a box-sizing border-box model to all elements */
 * {
-    box-sizing: border-box;
-  }
-  
-  /* Reset default margin and padding for the body */
-  body {
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Style for the sidebar */
-  .sidebar {
-    display: flex;
-    flex-direction: column;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    /* border-right: 1px solid rgb(201, 201, 201); */
-    overflow-x: hidden;
-  }
-  
-  /* Vertical line after the sidebar */
-  .sidebar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 90%;
-    width: 1px;
-    background-color: rgb(201, 201, 201);
-  }
-  
-  /* Style for the user information */
-  .user {
-    text-align: center;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  /* Style for the user's name */
-  .user span {
-    font-size: smaller;
-    color: grey;
-  }
-  
-  /* Style for the user's image */
-  .user img {
-    width: 75px;
-    aspect-ratio: 1/1;
-    border-radius: 100%;
-    background-color: rgb(234, 234, 234);
-  }
-  
-  /* Style for the sidebar menu */
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  .menubar{
-  }
-  /* Style for the sidebar menu items */
-  .sidebar ul li {
-    padding: 7.5px;
-    padding-left: 5%;
-    margin: 2.5px;
-    transition: all 0.25s ease-in;
-  }
-  
-  .sidebar ul li:last-child {
-    margin-top: 100%;
-  }
-  
-  .sidebar ul li:hover {
-    /* border-radius: 5px;
-    background-color: rgb(158, 200, 185); */
-    color: rgb(158, 200, 185);
-  }
-  .sidebar ul li:hover i{
-    color:rgb(158, 200, 185);
-  }
-  .sidebar ul li i{
-    padding-right: 5px;
-  }
+  box-sizing: border-box;
+}
 
-  hr {
-    width: 70%;
-    border: 1px solid rgb(201, 201, 201);
+body {
+  margin: 0;
+  padding: 0;
+}
+.main{
+  display: flex;
+}
+.menu{
+  /* position: fixed; */
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  height: 100%;
+  width: 200px;
+  position: sticky;
+  display: block;
+  /* overflow-x: hidden; */
+}
+
+.sidebar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 80vh;
+  width: 1px;
+  background-color: rgb(201, 201, 201);
+}
+
+.user {
+  margin-bottom: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user span {
+  font-size: smaller;
+  color: grey;
+}
+
+.user img {
+  width: 75px;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  background-color: rgb(234, 234, 234);
+}
+.sidebar ul {
+  list-style-type: none;
+}
+.menubar {
+  align-items: center;
+}
+.sidebar ul li {
+  margin-bottom: 2.5px;
+  padding-top: 15px;
+  transition: all 0.25s ease-in;
+}
+
+.sidebar ul li:last-child {
+  margin-top: 70%;
+}
+
+.sidebar ul li:hover {
+  color: rgb(158, 200, 185);
+  cursor: pointer;
+}
+.sidebar ul li:hover i {
+  color: rgb(158, 200, 185);
+}
+.sidebar ul li i {
+  padding-right: 5px;
+}
+
+hr {
+  width: 70%;
+  border: 1px solid rgb(201, 201, 201);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    overflow-x: visible;
   }
-  
-  @media (max-width: 768px) {
-    .sidebar {
-      width: 100%;
-      height: auto;
-      position: static;
-      border-right: none;
-      overflow-x: visible;
-    }
-    .sidebar::after {
-      display: none;
-    }
+  .sidebar::after {
+    display: none;
   }
-  
+}
