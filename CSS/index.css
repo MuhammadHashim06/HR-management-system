@@ -72,6 +72,7 @@
   /* Media Query for smaller screens */
   @media (max-width: 768px) {
     .Box {
+      /* display: flex; */
       grid-template-columns: 1fr;
       background-color: rgb(158, 200, 185);
     }
@@ -92,7 +93,7 @@
     input[type="password"],
     input[type="submit"],
     label {
-      font-size: 0.8em; /* Adjust font size for smaller screens */
+      font-size: 0.8em; 
     }
   }
   

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications</title>
+    <link rel="stylesheet" href="../CSS/Dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="sidebar">
+            <div class="user">
+                <img src="../Images/Log-in_vector.png" alt="">
+                <p>Muhammad Hashim <br>
+                    <span>Web developer</span>
+                </p>
+            </div>
+            <div class="menubar">
+                <ul>
+                    <li><a href="Dashboard.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="Attendance.html"><i class="far fa-calendar-alt"></i> Attendance</a></li>
+                    <li><a href="Assignments.html"><i class="far fa-clipboard"></i> Assignments</a></li>
+                    <li><a href="Applications.html" class="active"><i class="far fa-user-plus"></i> Applications</a></li>
+                    <li><a href="Logout.html"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="menu-toggle-btn"><i class="fas fa-bars"></i></div>
+            <h1>Applications Page</h1>
+            <form id="applicationForm">
+                <label for="subject">Subject:</label><br>
+                <input type="text" id="subject" name="subject"><br><br>
+                <label for="body">Body:</label><br>
+                <textarea id="body" name="body" rows="4" cols="50"></textarea><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <script src="../JS/Dashboard.js"></script>
+    <script>
+        document.getElementById("applicationForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            // Get the subject and body values
+            var subject = document.getElementById("subject").value;
+            var body = document.getElementById("body").value;
+            // Display the subject and body
+            alert("Subject: " + subject + "\nBody: " + body);
+            // You can send this data to a server using AJAX or any other method here
+        });
+    </script>
+</body>
+
+</html>

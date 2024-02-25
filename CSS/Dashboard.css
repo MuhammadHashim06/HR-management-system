@@ -6,22 +6,26 @@ body {
   margin: 0;
   padding: 0;
 }
-.main{
+
+.main {
   display: flex;
 }
-.menu{
-  /* position: fixed; */
+
+.menu {
+  margin-left: 250px;
 }
+
 .sidebar {
+  background-color: white;
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  padding-top: 40px;
   margin-bottom: 40px;
-  height: 100%;
   width: 200px;
-  position: sticky;
-  display: block;
-  /* overflow-x: hidden; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
 }
 
 .sidebar::after {
@@ -29,6 +33,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
+  margin-top: 40px;
   height: 80vh;
   width: 1px;
   background-color: rgb(201, 201, 201);
@@ -41,6 +46,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
 .user span {
   font-size: smaller;
   color: grey;
@@ -52,18 +58,29 @@ body {
   border-radius: 100%;
   background-color: rgb(234, 234, 234);
 }
+
 .sidebar ul {
   list-style-type: none;
 }
+
 .menubar {
   align-items: center;
 }
+
 .sidebar ul li {
+  color: black;
   margin-bottom: 2.5px;
   padding-top: 15px;
   transition: all 0.25s ease-in;
 }
+.sidebar ul li a{
+  color: black;
+  text-decoration: none;
+}
+.sidebar ul li a:hover{
+  color: rgb(158, 200, 185);
 
+}
 .sidebar ul li:last-child {
   margin-top: 70%;
 }
@@ -72,10 +89,13 @@ body {
   color: rgb(158, 200, 185);
   cursor: pointer;
 }
+
 .sidebar ul li:hover i {
   color: rgb(158, 200, 185);
 }
+
 .sidebar ul li i {
+  color: black;
   padding-right: 5px;
 }
 
@@ -84,15 +104,37 @@ hr {
   border: 1px solid rgb(201, 201, 201);
 }
 
-@media (max-width: 768px) {
+/* Toggle button styles */
+.menu-toggle-btn {
+  display: none; /* Initially hide the toggle button */
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
   .sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
-    border-right: none;
-    overflow-x: visible;
+    display: none; /* Hide the sidebar by default for small screens */
   }
-  .sidebar::after {
-    display: none;
+
+  .menu-toggle-btn {
+    display: block; /* Show the toggle button for small screens */
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
   }
+
+  .menu {
+    margin-top: 30px;
+    margin-left: 10px; /* Adjust the menu margin */
+  }
+}
+
+/* Additional styles for the toggle button icon */
+.menu-toggle-btn i {
+  font-size: 24px;
+}
+
+/* Styles for the sidebar when shown */
+.show-sidebar {
+  display: flex !important;
 }
