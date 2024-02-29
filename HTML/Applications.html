@@ -6,10 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Applications</title>
     <link rel="stylesheet" href="../CSS/Dashboard.css">
+    <link rel="stylesheet" href="../CSS/Applications.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
+    <div class="applicationform" id="applicationFormContainer" style="display: none;">
+        <form id="applicationForm">
+            <label for="subject">Subject:</label><br>
+            <input type="text" id="subject" name="subject" required><br><br>
+            <label for="body">Body:</label><br>
+            <textarea id="body" name="body"rows="5"  required></textarea><br><br>
+            <input type="submit" value="Submit">
+            <input type="button" value="Cancel" onclick="hideform()">
+        </form>
+    </div>
     <div class="main">
         <div class="sidebar">
             <div class="user">
@@ -23,33 +34,69 @@
                     <li><a href="Dashboard.html"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="Attendance.html"><i class="far fa-calendar-alt"></i> Attendance</a></li>
                     <li><a href="Assignments.html"><i class="far fa-clipboard"></i> Assignments</a></li>
-                    <li><a href="Applications.html" class="active"><i class="far fa-user-plus"></i> Applications</a></li>
-                    <li><a href="Logout.html"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+                    <li><a href="Applications.html" class="active"><i class="far fa-user-plus"></i> Applications</a>
+                    </li>
+                    <li><a href="/index.html"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
                 </ul>
             </div>
         </div>
         <div class="menu">
             <div class="menu-toggle-btn"><i class="fas fa-bars"></i></div>
-            <h1>Applications Page</h1>
-            <form id="applicationForm">
-                <label for="subject">Subject:</label><br>
-                <input type="text" id="subject" name="subject"><br><br>
-                <label for="body">Body:</label><br>
-                <textarea id="body" name="body"></textarea><br><br>
-                <input type="submit" value="Submit">
-            </form>
+            <div class="menunavigation">
+                <h1>Applications Page</h1>
+                <button onclick="showform()">New+</button>
+            </div>
+           
+            <table id="applicationTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Subject</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Table rows will be added dynamically -->
+                </tbody>
+            </table>
         </div>
     </div>
     <script src="../JS/Dashboard.js"></script>
     <script>
-        document.getElementById("applicationForm").addEventListener("submit", function(event) {
+        function hideform(){
+            var formContainer = document.getElementById("applicationFormContainer");
+            if (formContainer.style.display === "block") {
+                formContainer.style.display = "none";
+            }
+        }
+        function showform() {
+            var formContainer = document.getElementById("applicationFormContainer");
+            if (formContainer.style.display === "none") {
+                formContainer.style.display = "block";
+            } else {
+                formContainer.style.display = "none";
+            }
+        }
+
+        document.getElementById("applicationForm").addEventListener("submit", function (event) {
             event.preventDefault(); // Prevent the form from submitting
-            // Get the subject and body values
             var subject = document.getElementById("subject").value;
             var body = document.getElementById("body").value;
-            // Display the subject and body
-            alert("Subject: " + subject + "\nBody: " + body);
-            // You can send this data to a server using AJAX or any other method here
+
+            // Create a new row for the table
+            var table = document.getElementById("applicationTable").getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow();
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            cell1.innerHTML = "Muhammad Hashim"; // Change this to the actual name if needed
+            cell2.innerHTML = subject;
+            cell3.innerHTML = "Pending"; // Default status is pending, can be changed later
+
+            // Reset the form
+            document.getElementById("applicationForm").reset();
+            // Hide the form
+            document.getElementById("applicationFormContainer").style.display = "none";
         });
     </script>
 </body>
