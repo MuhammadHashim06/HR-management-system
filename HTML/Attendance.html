@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance</title>
     <link rel="stylesheet" href="../CSS/Dashboard.css">
+    <link rel="stylesheet" href="../CSS/Attendance.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
@@ -37,4 +38,90 @@
     <script src="../JS/Dashboard.js"></script>
 </body>
 
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../CSS/Dashboard.css">
+    <link rel="stylesheet" href="../CSS/Attendance.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Attendance System</h1>
+        <div id="attendanceForm" class="form">
+            <h2>Mark Attendance</h2>
+            <button onclick="markAttendance('present')">Mark Present</button>
+            <button onclick="markAttendance('absent')">Mark Absent</button>
+        </div>
+        <div id="attendanceList" class="attendance-list">
+            <h2>Previous Attendance</h2>
+            <ul id="attendanceItems"></ul>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="sidebar">
+            <div class="user">
+                <img src="../Images/Log-in_vector.png" alt="">
+                <p>Muhammad Hashim <br>
+                    <span>Web developer</span>
+                </p>
+            </div>
+            <div class="menubar">
+                <ul>
+                    <li><a href="Dashboard.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="Attendance.html" class="active"><i class="far fa-calendar-alt"></i> Attendance</a></li>
+                    <li><a href="Assignments.html"><i class="far fa-clipboard"></i> Assignments</a></li>
+                    <li><a href="Applications.html"><i class="far fa-user-plus"></i> Applications</a></li>
+                    <li><a href="/index.html"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="menu-toggle-btn"><i class="fas fa-bars"></i></div>
+            <!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Attendance System</h1>
+        <div id="attendanceForm" class="form">
+            <h2>Mark Attendance</h2>
+            <button onclick="markAttendance('present')">Mark Present</button>
+            <button onclick="markAttendance('absent')">Mark Absent</button>
+        </div>
+        <div id="attendanceList" class="attendance-list">
+            <h2>Previous Attendance</h2>
+            <ul id="attendanceItems"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
 </html>
+is is the attendance page content.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="../JS/Dashboard.js"></script>
+</body>
+
+</html> -->

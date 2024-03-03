@@ -4,9 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance</title>
+    <title>Assignments</title>
     <link rel="stylesheet" href="../CSS/Dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .assignment-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .assignment-modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .assignment-modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,10 +75,51 @@
         <div class="menu">
             <div class="menu-toggle-btn"><i class="fas fa-bars"></i></div>
             <h1>Assignments Page</h1>
-            <p>This is the Assignments page content.</p>
+            <div id="assignmentsList">
+                <h2>Current Assignments</h2>
+                <div class="assignment-box" onclick="openAssignmentModal('Assignment 1', 'Admin', 'February 28, 2024', 'March 10, 2024')">Assignment 1</div>
+                <div class="assignment-box" onclick="openAssignmentModal('Assignment 2', 'Admin', 'February 28, 2024', 'March 15, 2024')">Assignment 2</div>
+                <!-- Add more assignments as needed -->
+            </div>
+            <div id="assignmentModal" class="assignment-modal">
+                <div class="assignment-modal-content">
+                    <span class="close" onclick="closeAssignmentModal()">&times;</span>
+                    <h2 id="assignmentTitle"></h2>
+                    <p><strong>Assigned By:</strong> <span id="assignedBy"></span></p>
+                    <p><strong>Date of Assigning:</strong> <span id="dateAssigning"></span></p>
+                    <p><strong>Due Date:</strong> <span id="dueDate"></span></p>
+                    <button onclick="markAsCompleted()">Mark as Completed</button>
+                    <button onclick="submitAssignment()">Submit</button>
+                </div>
+            </div>
         </div>
     </div>
     <script src="../JS/Dashboard.js"></script>
+    <script>
+        function openAssignmentModal(title, assignedBy, dateAssigning, dueDate) {
+            document.getElementById('assignmentTitle').textContent = title;
+            document.getElementById('assignedBy').textContent = assignedBy;
+            document.getElementById('dateAssigning').textContent = dateAssigning;
+            document.getElementById('dueDate').textContent = dueDate;
+            document.getElementById('assignmentModal').style.display = 'block';
+        }
+
+        function closeAssignmentModal() {
+            document.getElementById('assignmentModal').style.display = 'none';
+        }
+
+        function markAsCompleted() {
+            // Implement functionality to mark assignment as completed
+            alert('Assignment marked as completed');
+            closeAssignmentModal();
+        }
+
+        function submitAssignment() {
+            // Implement functionality to submit assignment
+            alert('Assignment submitted');
+            closeAssignmentModal();
+        }
+    </script>
 </body>
 
 </html>

@@ -4,9 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="../CSS/Dashboard.css">
+    <title>Home</title>
+    <link rel="stylesheet" href="../CSS/Dashboard.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes"></script>
+    <style>
+        .content {
+            padding: 20px;
+        }
+
+        .chart-container {
+            margin: 20px 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,7 +32,7 @@
             </div>
             <div class="menubar">
                 <ul>
-                   <li><a href="Dashboard.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="Dashboard.html"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="Attendance.html" class="active"><i class="far fa-calendar-alt"></i> Attendance</a></li>
                     <li><a href="Assignments.html"><i class="far fa-clipboard"></i> Assignments</a></li>
                     <li><a href="Applications.html"><i class="far fa-user-plus"></i> Applications</a></li>
@@ -31,9 +43,114 @@
         <div class="menu">
             <div class="menu-toggle-btn"><i class="fas fa-bars"></i></div>
             <h1>Home</h1>
+            <div class="content">
+                <div class="announcement">
+                    <h2>Announcement</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et mauris vel tortor convallis
+                        tincidunt. Aliquam nec congue enim. Donec rutrum tellus eget diam consequat, sit amet
+                        scelerisque justo cursus.</p>
+                    <!-- Display the latest announcement from the admin here -->
+                </div>
+                <div class="chart-container">
+                    <canvas id="attendanceChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="assignmentChart"></canvas>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="../JS/Dashboard.js"></script>
+    <script>
+        // Sample data for attendance pie chart
+        var attendanceData = {
+            labels: ['Present', 'Leave'],
+            datasets: [{
+                data: [20, 5], // Sample data, replace with actual values
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Attendance pie chart
+        var attendanceCtx = document.getElementById('attendanceChart').getContext('2d');
+        var attendanceChart = new Chart(attendanceCtx, {
+            type: 'pie',
+            data: attendanceData,
+            options: {
+                plugins: {
+                    datalabels: {
+                        color: '#fff',
+                        font: {
+                            weight: 'bold'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Sample data for assignment Gantt chart
+        var assignmentData = {
+            labels: ['Task 1', 'Task 2', 'Task 3'],
+            datasets: [{
+                data: [{
+                        x: new Date('2022-01-01'),
+                        x2: new Date('2022-01-10'),
+                        y: 0,
+                        label: 'Task 1'
+                    },
+                    {
+                        x: new Date('2022-01-05'),
+                        x2: new Date('2022-01-15'),
+                        y: 1,
+                        label: 'Task 2'
+                    },
+                    {
+                        x: new Date('2022-01-12'),
+                        x2: new Date('2022-01-22'),
+                        y: 2,
+                        label: 'Task 3'
+                    }
+                ],
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        // Assignment Gantt chart
+        var assignmentCtx = document.getElementById('assignmentChart').getContext('2d');
+        var assignmentChart = new Chart(assignmentCtx, {
+            type: 'horizontalBar',
+            data: assignmentData,
+            options: {
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Tasks'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
