@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Metrics Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+        }
+
+        nav {
+            width: 250px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin-right: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-bottom: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .metrics {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .metric {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        .reports {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>HR Metrics Dashboard</h1>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Attendance</a></li>
+                <li><a href="#">Leave Requests</a></li>
+                <li><a href="#">Performance Evaluations</a></li>
+                <li><a href="#">Reports</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <div class="metrics">
+                <div class="metric">
+                    <h2>Attendance</h2>
+                    <p>95%</p>
+                </div>
+                <div class="metric">
+                    <h2>Leave Taken</h2>
+                    <p>10 days</p>
+                </div>
+                <div class="metric">
+                    <h2>Performance Ratings</h2>
+                    <p>4.5/5</p>
+                </div>
+            </div>
+
+            <div class="reports">
+                <button onclick="generateReport('pdf')">Generate PDF Report</button>
+                <button onclick="generateReport('excel')">Generate Excel Report</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateReport(format) {
+            // Implement report generation logic here
+            alert(`Generating ${format.toUpperCase()} report...`);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Monitoring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .container {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .filters {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .filters label {
+            margin-right: 10px;
+        }
+
+        .filters input[type="text"],
+        .filters input[type="date"] {
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        .filters button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Attendance Monitoring</h1>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="AddEmployee.html" >Employee List</a></li>
+            <li><a href="/HTML/" >Leave Requests</a></li>
+            <li><a href="/HTML/tracking.html" class="active">Attendance</a></li>
+            <li><a href="#">Performance Evaluations</a></li>
+            <li><a href="#">Reports</a></li>
+            </ul>
+        </nav>
+        <div class="filters">
+            <label for="dateFrom">From:</label>
+            <input type="date" id="dateFrom">
+
+            <label for="dateTo">To:</label>
+            <input type="date" id="dateTo">
+
+            <label for="employeeName">Employee Name:</label>
+            <input type="text" id="employeeName">
+
+            <button onclick="applyFilters()">Apply Filters</button>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Employee Name</th>
+                <th>Work Hours</th>
+            </tr>
+        </thead>
+        <tbody id="attendanceData">
+            <!-- Attendance data will be populated here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Sample attendance data (replace with actual data from your database)
+        const attendanceData = [
+            { date: '2024-03-01', employeeName: 'John Doe', workHours: 8 },
+            { date: '2024-03-02', employeeName: 'John Doe', workHours: 7.5 },
+            { date: '2024-03-01', employeeName: 'Jane Smith', workHours: 7 },
+            { date: '2024-03-02', employeeName: 'Jane Smith', workHours: 8 }
+            // Add more attendance data as needed
+        ];
+
+        // Function to render attendance data in the table
+        function renderAttendanceData() {
+            const tableBody = document.getElementById('attendanceData');
+            tableBody.innerHTML = '';
+
+            attendanceData.forEach(record => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${record.date}</td>
+                    <td>${record.employeeName}</td>
+                    <td>${record.workHours}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Function to apply filters
+        function applyFilters() {
+            const dateFrom = document.getElementById('dateFrom').value;
+            const dateTo = document.getElementById('dateTo').value;
+            const employeeName = document.getElementById('employeeName').value;
+
+            // Apply filters (not implemented in this example)
+            // You can filter the attendanceData array based on the selected date range and employee name
+
+            // For now, just render the full attendance data
+            renderAttendanceData();
+        }
+
+        // Initial rendering of attendance data
+        renderAttendanceData();
+    </script>
+</body>
+
+</html>

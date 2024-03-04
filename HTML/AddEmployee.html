@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../CSS/Dashboard.css">
+
+    <title>Employee Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .content h1 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td button {
+            padding: 5px 10px;
+            margin-right: 5px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+
+        td button:hover {
+            background-color: #555;
+        }
+
+        .active {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="#" class="active">Employee List</a></li>
+            <li><a href="Request.html">Leave Requests</a></li>
+            <li><a href="/HTML/tracking.html">Attendance</a></li>
+            <li><a href="#">Performance Evaluations</a></li>
+            <li><a href="#">Reports</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Employee List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="employeeList">
+                <!-- Employee data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Sample employee data (replace with actual data from your database)
+        const employees = [
+            { id: 1, name: 'John Doe', email: 'john.doe@example.com', department: 'IT' },
+            { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', department: 'HR' },
+            { id: 3, name: 'Alice Johnson', email: 'alice.johnson@example.com', department: 'Finance' }
+            // Add more employee data as needed
+        ];
+
+        // Function to render employee data in the table
+        function renderEmployees() {
+            const tableBody = document.getElementById('employeeList');
+            tableBody.innerHTML = '';
+
+            employees.forEach(employee => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${employee.id}</td>
+                    <td>${employee.name}</td>
+                    <td>${employee.email}</td>
+                    <td>${employee.department}</td>
+                    <td>
+                        <button onclick="editEmployee(${employee.id})">Edit</button>
+                        <button onclick="deleteEmployee(${employee.id})">Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Function to edit employee information
+        function editEmployee(employeeId) {
+            // Implement edit functionality here
+            alert(`Editing employee with ID: ${employeeId}`);
+        }
+
+        // Function to delete employee
+        function deleteEmployee(employeeId) {
+            // Implement delete functionality here
+            alert(`Deleting employee with ID: ${employeeId}`);
+        }
+
+        // Initial rendering of employee data
+        renderEmployees();
+    </script>
+</body>
+
+</html>

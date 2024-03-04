@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Evaluation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .container {
+            width: 80%;
+            display: flex;
+        }
+
+        nav {
+            width: 250px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin-right: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-bottom: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        form {
+            flex: 1;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select,
+        textarea {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Performance Evaluation</h1>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Leave Requests</a></li>
+                <li><a href="#">Attendance</a></li>
+                <li><a href="#">Performance Evaluations</a></li>
+                <li><a href="#">Reports</a></li>
+            </ul>
+        </nav>
+        <form>
+            <label for="employee">Select Employee:</label>
+            <select id="employee" name="employee">
+                <option value="john">John Doe</option>
+                <option value="jane">Jane Smith</option>
+                <!-- Add more employee options as needed -->
+            </select>
+
+            <label for="communication">Communication Skills:</label>
+            <select id="communication" name="communication">
+                <option value="excellent">Excellent</option>
+                <option value="good">Good</option>
+                <option value="average">Average</option>
+                <option value="poor">Poor</option>
+            </select>
+
+            <label for="teamwork">Teamwork Skills:</label>
+            <select id="teamwork" name="teamwork">
+                <option value="excellent">Excellent</option>
+                <option value="good">Good</option>
+                <option value="average">Average</option>
+                <option value="poor">Poor</option>
+            </select>
+
+            <label for="problem-solving">Problem Solving Skills:</label>
+            <select id="problem-solving" name="problem-solving">
+                <option value="excellent">Excellent</option>
+                <option value="good">Good</option>
+                <option value="average">Average</option>
+                <option value="poor">Poor</option>
+            </select>
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" rows="4"></textarea>
+
+            <input type="submit" value="Submit Evaluation">
+        </form>
+    </div>
+</body>
+
+</html>
