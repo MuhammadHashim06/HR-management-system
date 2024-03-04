@@ -5,18 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="../CSS/Dashboard.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/Dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         .content {
             padding: 20px;
         }
 
         .chart-container {
-            margin: 20px 0;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        /* Style for the active link */
+        .menu-link.active {
+            background-color:  rgb(158, 200, 185);;
+            color: white; /* Change the color to highlight */
+            font-weight: bold; /* Make the text bold */
+            /* Add any other styles you want for the active link */
         }
     </style>
 </head>
@@ -32,11 +39,11 @@
             </div>
             <div class="menubar">
                 <ul>
-                    <li><a href="Dashboard.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="Attendance.html" class="active"><i class="far fa-calendar-alt"></i> Attendance</a></li>
-                    <li><a href="Assignments.html"><i class="far fa-clipboard"></i> Assignments</a></li>
-                    <li><a href="Applications.html"><i class="far fa-user-plus"></i> Applications</a></li>
-                    <li><a href="/index.html"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+                    <li class="menu-link"><a href="Dashboard.html" class="menu-link">Home</a></li>
+                    <li><a href="Attendance.html" class="menu-link">Attendance</a></li>
+                    <li><a href="Assignments.html" class="menu-link">Assignments</a></li>
+                    <li><a href="Applications.html" class="menu-link">Applications</a></li>
+                    <li><a href="/index.html" class="menu-link">Log out</a></li>
                 </ul>
             </div>
         </div>
@@ -57,95 +64,66 @@
                 <div class="chart-container">
                     <canvas id="assignmentChart"></canvas>
                 </div>
+
             </div>
         </div>
     </div>
+    <script src="../JS/Dashboard.js"></script>
     <script>
-        // Sample data for attendance pie chart
-        var attendanceData = {
-            labels: ['Present', 'Leave'],
-            datasets: [{
-                data: [20, 5], // Sample data, replace with actual values
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 99, 132, 0.5)'
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 99, 132, 1)'
-                ],
-                borderWidth: 1
-            }]
-        };
+        // Get the current URL path
+        var path = window.location.pathname;
+        // Get the filename from the path
+        var page = path.split("/").pop();
+        // Find the corresponding link and add the 'active' class
+        document.querySelectorAll('.menu-link').forEach(function(link) {
+            if (link.getAttribute('href') === page) {
+                link.classList.add('active');
+            }
+        });
 
-        // Attendance pie chart
+        // Attendance progress line chart
         var attendanceCtx = document.getElementById('attendanceChart').getContext('2d');
         var attendanceChart = new Chart(attendanceCtx, {
-            type: 'pie',
-            data: attendanceData,
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Attendance Progress',
+                    data: [80, 85, 90, 92],
+                    fill: false,
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
             options: {
-                plugins: {
-                    datalabels: {
-                        color: '#fff',
-                        font: {
-                            weight: 'bold'
-                        }
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
                     }
                 }
             }
         });
 
-        // Sample data for assignment Gantt chart
-        var assignmentData = {
-            labels: ['Task 1', 'Task 2', 'Task 3'],
-            datasets: [{
-                data: [{
-                        x: new Date('2022-01-01'),
-                        x2: new Date('2022-01-10'),
-                        y: 0,
-                        label: 'Task 1'
-                    },
-                    {
-                        x: new Date('2022-01-05'),
-                        x2: new Date('2022-01-15'),
-                        y: 1,
-                        label: 'Task 2'
-                    },
-                    {
-                        x: new Date('2022-01-12'),
-                        x2: new Date('2022-01-22'),
-                        y: 2,
-                        label: 'Task 3'
-                    }
-                ],
-                backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }]
-        };
-
-        // Assignment Gantt chart
+        // Assignment progress bar chart
         var assignmentCtx = document.getElementById('assignmentChart').getContext('2d');
         var assignmentChart = new Chart(assignmentCtx, {
-            type: 'horizontalBar',
-            data: assignmentData,
+            type: 'bar',
+            data: {
+                labels: ['Assignment 1', 'Assignment 2', 'Assignment 3', 'Assignment 4', 'Assignment 5'],
+                datasets: [{
+                    label: 'Assignment Progress',
+                    data: [2, 4, 3, 5, 1],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
             options: {
                 scales: {
-                    x: {
-                        type: 'time',
-                        time: {
-                            unit: 'day'
-                        },
-                        title: {
-                            display: true,
-                            text: 'Date'
-                        }
-                    },
                     y: {
-                        title: {
-                            display: true,
-                            text: 'Tasks'
-                        }
+                        beginAtZero: true,
+                        max: 5
                     }
                 }
             }
