@@ -1,0 +1,240 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Organizational Structure</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+    button {
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 5px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Manage Organizational Structure</h1>
+    <div>
+        <h2>Add Department</h2>
+        <div class="form-group">
+            <label for="departmentName">Department Name:</label>
+            <input type="text" id="departmentName">
+        </div>
+        <button onclick="addDepartment()">Add Department</button>
+    </div>
+    <hr>
+    <div>
+        <h2>Departments</h2>
+        <ul id="departmentList"></ul>
+    </div>
+</div>
+<script>
+    let departments = [];
+
+    function addDepartment() {
+        const departmentName = document.getElementById('departmentName').value;
+        if (departmentName.trim() === '') {
+            alert('Please enter a department name');
+            return;
+        }
+        departments.push({ name: departmentName, manager: null, teams: [] });
+        displayDepartments();
+    }
+
+    function displayDepartments() {
+        const departmentList = document.getElementById('departmentList');
+        departmentList.innerHTML = '';
+        departments.forEach((department, index) => {
+            const li = document.createElement('li');
+            li.textContent = department.name;
+            const editBtn = document.createElement('button');
+            editBtn.textContent = 'Edit';
+            editBtn.onclick = () => editDepartment(index);
+            li.appendChild(editBtn);
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.onclick = () => deleteDepartment(index);
+            li.appendChild(deleteBtn);
+            departmentList.appendChild(li);
+        });
+    }
+
+    function editDepartment(index) {
+        const newName = prompt('Enter the new name for the department:');
+        if (newName && newName.trim() !== '') {
+            departments[index].name = newName;
+            displayDepartments();
+        }
+    }
+
+    function deleteDepartment(index) {
+        departments.splice(index, 1);
+        displayDepartments();
+    }
+</script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Employee Information</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    input[type="text"], input[type="email"], input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+    select {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+    button {
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Add Employee Information</h1>
+    <div>
+        <div class="form-group">
+            <label for="name">Employee Name:</label>
+            <input type="text" id="name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone">
+        </div>
+        <div class="form-group">
+            <label for="salary">Salary:</label>
+            <input type="text" id="salary">
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" id="address">
+        </div>
+        <div class="form-group">
+            <label for="role">Role:</label>
+            <select id="role">
+                <option value="employee">Employee</option>
+                <option value="manager">Manager</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="team">Team:</label>
+            <input type="text" id="team">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password">
+        </div>
+        <button onclick="addEmployee()">Add Employee</button>
+    </div>
+</div>
+<script>
+    function addEmployee() {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const salary = document.getElementById('salary').value;
+        const address = document.getElementById('address').value;
+        const role = document.getElementById('role').value;
+        const team = document.getElementById('team').value;
+        const password = document.getElementById('password').value;
+        
+        if (name.trim() === '' || email.trim() === '' || phone.trim() === '' || salary.trim() === '' || address.trim() === '' || role.trim() === '' || team.trim() === '' || password.trim() === '') {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        // You can send this data to a server for further processing, such as saving to a database
+        console.log('Name:', name);
+        console.log('Email:', email);
+        console.log('Phone Number:', phone);
+        console.log('Salary:', salary);
+        console.log('Address:', address);
+        console.log('Role:', role);
+        console.log('Team:', team);
+        console.log('Password:', password);
+
+        alert('Employee added successfully!');
+        // You can redirect to another page or perform any other action here
+    }
+</script>
+</body>
+</html>
